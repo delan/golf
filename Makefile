@@ -1,13 +1,9 @@
-all: luke millie delan
-luke: luke.c
-millie: millie.c
-delan: delan.c
+OUT = luke millie delan
+all: $(OUT)
 test: all
-	./test.sh luke
-	./test.sh millie
-	./test.sh delan
+	for i in $(OUT); do ./test.sh $$i; done
 golf:
 	dos2unix *.c
 	wc -c *.c
 clean:
-	rm -f luke millie delan *.stackdump
+	rm -f $(OUT) *.stackdump
